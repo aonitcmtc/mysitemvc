@@ -27,7 +27,7 @@
         background-image: url("../img-default/logincover2.jpg");
         background-repeat: no-repeat;
         background-color: #000; /* Used if the image is unavailable */
-        height: 120vh; /* You must set a specified height */
+        height: 100vh; /* You must set a specified height */
         background-position: center; /* Center the image */
         background-size: cover; /* Resize the background image to cover the entire container */
     }
@@ -58,14 +58,14 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="d-login">
                 <div class="my-3 text-center">
-                    <h2>Login to Dashboard</h2>
+                    <h4>Login to Dashboard</h4>
                 </div>
 
                 <div class="row">
-                    <div class="col-12 text-center my-3">
+                    <div class="col-12 text-center my-2">
                     <!-- https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg -->
                     <img src="../img-default/loginlogo.jpg" 
-                        class="rounded-circle" alt="image Profile" width="160" height="160">
+                        class="rounded-circle" alt="image Profile" width="140" height="140">
                     </div>
                 </div>
                 <!-- <p>In this example, we use <code>.was-validated</code> to indicate what's missing before submitting the form:</p> -->
