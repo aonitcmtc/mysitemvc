@@ -1,0 +1,107 @@
+Got it — you’re running your CodeIgniter 4 server with nohup php spark serve --port 9000 > server.log 2>&1 & and want it to automatically restart on system startup. The clean way to do this on Ubuntu/Linux is to use systemd instead of relying on nohup. That way, the service is managed properly, logs are handled, and it restarts if it crashes.
+Here’s how you can set it up:
+
+1. Create a systemd service file
+Create a new file at:
+sudo nano /etc/systemd/system/codeigniter.service
+
+
+Add the following content (adjust paths as needed):
+[Unit]
+Description=CodeIgniter 4 PHP Spark Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/path/to/your/project
+ExecStart=/usr/bin/php spark serve --port 9000
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/codeigniter.log
+StandardError=append:/var/log/codeigniter-error.log
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+2. Reload systemd and enable the service
+sudo systemctl daemon-reload
+sudo systemctl enable codeigniter.service
+sudo systemctl start codeigniter.service
+
+
+
+3. Check status and logs
+sudo systemctl status codeigniter.service
+journalctl -u codeigniter.service -f
+
+
+
+Why this is better than nohup
+- Automatic restart if the server crashes.
+- Starts on boot without extra scripts.
+- Logs managed in a consistent place.
+- Cleaner control with systemctl start/stop/restart.
+
+
+modify-of-mysitemvc 
+*****************************************************
+Create a new file at:
+sudo nano /etc/systemd/system/codeigniter.service
+sudo mkdir log
+sudo chmod -R 777 log/
+*****************************************************
+
+[Unit]
+Description=CodeIgniter 4 PHP Spark Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/html/mysitemvc
+ExecStart=/usr/bin/php spark serve --port 9000
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/www/html/mysitemvc/log/codeigniter.log
+StandardError=append:/var/www/html/mysitemvc/log/codeigniter-error.log
+
+[Install]
+WantedBy=multi-user.target
+
+###########################################################################
+
+***Create a systemd service file
+sudo nano /etc/systemd/system/express_api.service
+sudo mkdir /var/www/html/log
+sudo chmod -R 777 log/
+
+*****************************************************
+
+[Unit]
+Description=Express API Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/html/express_api_pg
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+User=www-data
+Group=www-data
+StandardOutput=append:/var/www/html/log/express_api.log
+StandardError=append:/var/www/html/log/express_api-error.log
+
+[Install]
+WantedBy=multi-user.target
+
+*****************************************************
+
+sudo systemctl daemon-reload
+sudo systemctl enable express_api.service
+sudo systemctl start express_api.service
+
+sudo systemctl status express_api.service
+journalctl -u express_api.service -f

@@ -9,12 +9,12 @@ class Dashboard extends BaseController
     public function index()
     {
         // Simple protection (you can also use Filter - recommended)
-        if (! session()->get('is_admin')) {
+        if (!session()->get('access_token')) {
             return redirect()->to('/admin/login');
         }
 
         $data = [
-            'title'      => 'แดชบอร์ดผู้ดูแลระบบ',
+            'title'      => 'Admin',
             'admin_name' => session()->get('admin_name') ?? 'Admin'
         ];
 

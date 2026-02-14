@@ -49,7 +49,9 @@
         padding: 16px;
         width: 100%;
         min-height:48px;
-        background-color: #555;
+        backdrop-filter: blur(25px) brightness(120%);
+        color: #fff;
+        /* background-color: #555; */
     }
 </style>
 
@@ -102,7 +104,7 @@
     </div>
 </div>
 
-<div id="footer" class="footer bg-secondary">
+<div id="footer" class="footer">
     <?php include 'footer.php' ?>
 </div>
 

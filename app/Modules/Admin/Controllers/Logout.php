@@ -10,7 +10,7 @@ class Login extends BaseController
     {
         // Simple protection (you can also use Filter - recommended)
         $data = [
-            'title'      => 'แดชบอร์ดผู้ดูแลระบบ',
+            'title'      => 'see you agin.',
             'admin_name' => session()->get('admin_name') ?? 'Admin'
         ];
 
