@@ -23,7 +23,7 @@
             margin: 0;
         }
 
-        .landingpage { padding: 0; }
+        .landingpage { padding: 0; overflow-x: hidden;}
 
         /* .h-shoping {
             height: 68vh !important;
@@ -152,7 +152,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./">Home</a>
+                                <a class="nav-link active" aria-current="page" href="./mysite">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " aria-current="page" href="./page/noodle.php">Noodle Shop</a>
@@ -172,6 +172,16 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" target="_blank" href="./drive">myDrive</a></li>
+                                    <li><a class="dropdown-item" target="_blank" href="#">002</a></li>
+                                    <li><a class="dropdown-item" target="_blank" href="#">003</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Chart stock
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" target="_blank" href="/chart/xauusd">Xauusd</a></li>
                                     <li><a class="dropdown-item" target="_blank" href="#">002</a></li>
                                     <li><a class="dropdown-item" target="_blank" href="#">003</a></li>
                                 </ul>

@@ -1,0 +1,187 @@
+    body {
+        margin: 0;
+        padding: 0; 
+        /* margin-top: 500px; */
+
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        /* color: #e0e0ff; */
+        min-height: 100vh;
+
+        /* background-image: url("../img-default/logincover2.jpg"); */
+        background-repeat: no-repeat;
+        background-color: #C4D7FF; /* Used if the image is unavailable */
+        background-position: center; /* Center the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+    }
+
+    .bg-87A2FF {background-color: #87A2FF;}
+    .bg-C4D7FF {background-color: #C4D7FF;}
+    .bg-BD8843 {background-color: #BD8843;}
+    .bg-C89780 {background-color: #C89780;}
+    .bg-B3BFFF {background-color: #B3BFFF;}
+    .bg-96A7E8 {background-color: #96A7E8;}
+    .bd-87A {border: 2px solid #87A;}
+
+    .d-dashboard {
+        padding: 2rem; 
+        /* backdrop-filter: blur(10px) brightness(110%); */
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        min-height: 90vh;
+        border: 2px solid #B3BFFF;
+        border-radius: 30px;
+    }
+
+    .d-workspace {
+        margin: 2rem 0.5rem;
+        padding: 2rem; 
+        min-height: 50vh;
+        border: 2px solid #B3BFFF;
+        border-radius: 20px;
+    }
+
+    .d-navbar {
+        position: absolute;
+        padding: 0 100px;
+        width: 100%;
+        color: #fff;
+        background-color: #87A2FF;
+    }
+
+    .src-100 {
+        /* background-color: #343330; */
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    /* workspace */
+
+    .subtitle {
+        color: #94a3b8;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+    }
+
+    .mindmap {
+        position: relative;
+        height: 780px;
+        margin: 40px auto;
+    }
+
+    .center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 180px;
+        height: 180px;
+        background: linear-gradient(135deg, #bd8843, #c89780);
+        border-radius: 50%;
+        border: 12px dotted #f7df96;
+        box-shadow: 0 20px 40px #e3ad94;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #684316;
+        text-align: center;
+        padding: 20px;
+        z-index: 5;
+    }
+
+    .node {
+        position: absolute;
+        width: 240px;
+        padding: 14px 18px;
+        background: #1c3f77cd;
+        border: 2px solid #475569;
+        border-radius: 16px;
+        backdrop-filter: blur(6px);
+        transition: all 0.28s ease;
+        cursor: pointer;
+        user-select: none;
+        z-index: 2;
+    }
+
+    .node:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px #23212180;
+        border-color: #60a5fa;
+    }
+
+    .node.active {
+        background: #201b376f;
+        border-color: #93c5fd;
+        box-shadow: 0 0 30px #93c5fd66;
+    }
+
+    .node-title {
+        font-weight: bold;
+        color: #e3ebf4;
+        margin-bottom: 10px;
+        font-size: 1.15rem;
+    }
+
+    .node-content {
+        font-size: 0.95rem;
+        color: #cbd5e1;
+        line-height: 1.45;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, opacity 0.3s ease;
+        text-align: left;
+        padding: 0 1rem;
+        opacity: 0;
+    }
+
+    .node.active .node-content {
+        max-height: 300px;
+        opacity: 1;
+        margin-top: 12px;
+    }
+
+    .line {
+        position: absolute;
+        background: #475569;
+        height: 3px;
+        transform-origin: left center;
+        z-index: 1;
+        opacity: 0.7;
+    }
+
+    /* Positions - approximate radial layout */
+    #company    { top:  8%;  left: 12%; z-index: 9;}
+    #management { top: 27%; left: 68%; }
+    #finances   { top: 58%; left:  8%; }
+    #products   { top: 72%; left: 45%; }
+    #market     { top: 58%; left: 68%; }
+    #business   { top: 27%; left: 12%; }
+    #risk       { top:  8%;  left: 68%; }
+
+    @media (max-width: 900px) {
+        .mindmap { height: 1100px; }
+        .node { width: 220px; font-size: 0.95rem; }
+        #company    { top: 5%;  left: 5%; }
+        #management { top: 30%; left: 60%; }
+        #finances   { top: 65%; left: 5%; }
+        #products   { top: 85%; left: 38%; }
+        #market     { top: 65%; left: 60%; }
+        #business   { top: 30%; left: 5%; }
+        #risk       { top: 5%;  left: 60%; }
+    }
+
+    /* workspace */
+
+    .footer {
+        /* position: fixed;
+        bottom: 0; */
+        position: absolute;
+        padding: 16px;
+        width: 100%;
+        min-height:48px;
+        /* backdrop-filter: blur(25px) brightness(120%); */
+        color: #fff;
+        background-color: #87A2FF;
+    }

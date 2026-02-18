@@ -8,19 +8,40 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/powerby', 'Home::powerby');
 $routes->get('/mysite', 'Mysite::index');
+$routes->get('/chart/xauusd', 'Chart::xauusd');
 
 // Admin area
-$routes->group('admin', ['namespace' => 'App\Admin\Controllers'], function($routes) {
-    $routes->get('/',              'Dashboard::index');
-    // $routes->get('dashboard',      'Dashboard::index');
-    // $routes->get('users',          'Users::index');
+$routes->group('admin', ['namespace' => 'App\Admin\Controllers', 'filter' => 'adminAuth'], static function($routes) {
+    
     // $routes->match(['get', 'post'],'login', 'Auth::login');
-    // $routes->get('logout',         'Auth::logout');
+    $routes->get('/',              'Index::index');
+    $routes->get('dashboard',      'Dashboard::index');
+    $routes->get('users',          'Users::index');
 
-    $routes->post('checklogin',              'Auth::checklogin');
+    $routes->post('checklogin',    'Auth::checklogin');
+    $routes->get('register',          'Auth::register');
+    $routes->get('login',          'Auth::login');
+    $routes->get('logout',         'Auth::logout');
 
-    $routes->get('login',              'Auth::login');
-    $routes->get('logout',             'Auth::logout');
+    $routes->get('framsv1',         'Funny::framsv1');
+    $routes->get('mario',         'Funny::mario');
+    $routes->get('snake',         'Funny::snake');
+
+    // chart
+    $routes->get('chartlist',         'Trading::index');
+    $routes->get('chart/xauusd',         'Trading::xauusd');
+    $routes->get('chart/xauusdclassic',         'Trading::xauusdclassic');
+    $routes->get('chart/chartgoldthai',         'Trading::chartgoldthai');
+
+    // Tools
+    $routes->get('tools',         'Tools::index');
+    $routes->get('tools/apitest',         'Tools::apitest');
+
+
+    
+
+    
 });
+
 
 

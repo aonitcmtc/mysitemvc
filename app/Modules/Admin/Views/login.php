@@ -7,13 +7,17 @@
     <link rel="shortcut icon" type="image/png" href="../img-default/catlogo_ico.png">
 
 
-    <link href="./../asset/bootstrap462.min.css" rel="stylesheet">
-    <script src="./../asset/jquery.slim.min.js"></script>
-    <script src="./../asset/popper.min.js"></script>
-    <script src="./../asset/bootstrap.bundle.min.js"></script>
+    <link href="<?=base_url();?>asset/bootstrap462.min.css" rel="stylesheet">
+    <script src="<?=base_url();?>asset/jquery.slim.min.js"></script>
+    <script src="<?=base_url();?>asset/popper.min.js"></script>
+    <script src="<?=base_url();?>asset/bootstrap.bundle.min.js"></script>
+
+    <!-- CSS ICONS -->
+    <link href="<?=base_url();?>asset/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>asset/fontawesome4/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- cookieconsent -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css"> -->
 </head>
 <body>
 
@@ -60,7 +64,15 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="d-login">
                 <div class="my-3 text-center">
-                    <h4>Login to Dashboard</h4>
+                    <h4 class="text-secondary">Login to Workspace</h4>
+
+                    <i class="bi bi-person-fill-check text-light"></i>
+                    <span class="text-light">2</span>&emsp;
+
+                    <i class="bi bi-sunglasses text-light"></i>
+                    <span class="text-light">2</span>
+
+
                 </div>
 
                 <div class="row">
@@ -72,29 +84,21 @@
                 </div>
                 <!-- <p>In this example, we use <code>.was-validated</code> to indicate what's missing before submitting the form:</p> -->
                 <div class="my-3">
-                    <form action="./checklogin" method="POST" class="was-validated">
+                    <form action="./checklogin" method="POST" id="form_login" class="was-validated-unactive">
                         <div class="form-group">
-                            <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
-                            <!-- <div class="valid-feedback">Valid.</div> -->
-                            <div class="invalid-feedback">กรุณากรอก Username</div>
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                            <!-- <div class="valid-feedback">กรุณากรอก Email</div> -->
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
-                            <!-- <div class="valid-feedback">Valid.</div> -->
-                            <div class="invalid-feedback">กรุณากรอก Password</div>
+                            <!-- <div class="valid-feedback">กรุณากรอก Password</div> -->
                         </div>
-                        <!-- <div class="form-group form-check">
-                            <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Check this checkbox to continue.</div>
-                            </label>
-                        </div> -->
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        <a href="register.php">
-                            <button class="btn btn-outline-primary btn-block mt-2" type="button">Register</button>
+
+                        <button type="botton" id="login" class="btn btn-outline-light btn-block">Login</button>
+                        <a href="/admin/register" class="btn btn-outline-warning btn-block mt-2 text-decoration-none">
+                            Register
                         </a>
                     </form>
                 </div>
@@ -109,8 +113,21 @@
 </div>
 
 <!-- <script type="module" src="cookieconsent-config.js"></script> -->
-<script type="module" src="./../asset/iscookie/cookieconsent-config.js"></script>
+<!-- <script type="module" src="./../asset/iscookie/cookieconsent-config.js"></script> -->
 <!-- <script type="module" src="/asset/"></script> -->
+<script>
+    $(document).ready(function(){
+        $("#login").click(function(){
+            $("#form_login").removeClass("was-validated-unactive").addClass("was-validated");
 
+            var email = $('#email').val();
+            var password = $('#password').val();
+            if(email != "" && password != ""){
+                $('#form_login').submit();
+            }
+
+        });
+    });
+</script>
 </body>
 </html>

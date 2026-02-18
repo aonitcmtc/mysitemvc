@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb rounded-pill bg-96A7E8 px-3">
                     <li class="breadcrumb-item"><a class="text-decoration-none" href="/admin/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Users</li>
                 </ol>
 
                 <!-- <ol class="breadcrumb">
@@ -21,7 +21,7 @@
     </div>
     <div class="row justify-content-end">
         <div class="col-12 vh-100 text-center p-2">
-            <h2>Admin :: Dashboard</h2>
+            <h2>Admin :: Users</h2>
         </div>
     </div>
 </div>
