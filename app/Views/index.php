@@ -36,7 +36,14 @@
         }
 
         .btn-navigation {
-            margin-top: 155vh;
+            margin-top: 150vh;
+        }
+
+        .btn-lg {
+            --bs-btn-padding-y: 0.5rem;
+            --bs-btn-padding-x: 0.5rem;
+            --bs-btn-font-size: 1.2rem;
+            --bs-btn-border-radius: 20px;
         }
 
         /* .h-shoping {
@@ -140,16 +147,32 @@
 
         @media screen and (max-width: 575px) {
             .d-flex {
-            margin-bottom: 18px;
+                margin-bottom: 18px;
             }
 
             .crop-text-nav-hor { 
-            overflow:hidden; 
-            white-space:nowrap; 
-            text-overflow:ellipsis; 
-            width:80px; 
-        }
-            
+                overflow:hidden; 
+                white-space:nowrap; 
+                text-overflow:ellipsis; 
+                width:80px; 
+            }
+
+            .landingpage { 
+                height: 100vh; /* You must set a specified height */
+            }
+
+            .btn-navigation {
+                margin-top: 0;
+                position: absolute;
+                bottom: 1rem;
+            }
+
+            .btn-lg {
+                --bs-btn-padding-y: 0.3rem;
+                --bs-btn-padding-x: 0.3rem;
+                --bs-btn-font-size: 1rem;
+                --bs-btn-border-radius: 20px;
+            }
         }
     </style>
     
@@ -257,23 +280,42 @@
                         Discover Patchara's world of code
                         and imagination.
                     </h4>
+                    <h5>
+                        <i class="bi bi-people"></i>
+                        <span class="fs-6"><?= $count_view.'<br>'; ?></span>
+                    </h5>
+
+                    <!-- <p>
+                        <?php   
+                            $request = service('request'); // ดึง Request Service ของ CI4
+                            $ip      = $request->getIPAddress();
+                            $agent   = $request->getUserAgent();
+                            $url     = current_url();
+                            $visited_at = date('Y-m-d H:i:s');
+
+                            echo $ip.'<br>';
+                            echo $agent.'<br>';
+                            echo $url.'<br>';
+                            echo $visited_at;
+                        ?>
+                    </p> -->
                 </div>
             </div>
 
             <div class="btn-navigation">
                 <div class="row justify-content-center">
-                    <div class="col-6 text-end">
+                    <div class="col-6 text-end mb-3">
                         <a href="./mysite">
                             <button class="btn btn-lg btn-outline-light mx-4" type="button">&emsp; My Site &emsp;</button>
                         </a>
                     </div>
-                    <div class="col-6 text-start">
+                    <div class="col-6 text-start mb-3">
                         <a href="https://github.com/aonitcmtc" target="_blank">
                             <button class="btn btn-lg btn-outline-light mx-4" type="button">&emsp; Github &emsp;</button>
                         </a>
                     </div>
-
-                    <div class="col-6 text-center my-3">
+                    
+                    <div class="col-6 text-center mt-3">
                         <a href="./admin" target="_blank">
                             <button class="btn btn-lg btn-outline-light mx-4" type="button">&emsp; Admin site &emsp;</button>
                         </a>

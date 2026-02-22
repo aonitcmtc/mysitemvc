@@ -4,10 +4,10 @@
     <html lang="th">
     <head>
         <meta charset="UTF-8">
-        <title><?= esc($title ?? 'Admin') ?></title>
+        <title><?= esc($title ?? 'mySite') ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <link rel="shortcut icon" type="image/png" href="../favicon.ico"> -->
-        <link rel="shortcut icon" type="image/png" href="<?=base_url();?><?= esc($favicon ?? 'favicon.ico') ?>">
+        <link rel="shortcut icon" type="image/png" href="<?=base_url();?><?= esc($favicon ?? 'homemysite.ico') ?>">
 
         <!-- Bootstrap 5 -->
         <link href="<?=base_url();?>asset/bootstrap.min.css" rel="stylesheet">
@@ -27,8 +27,7 @@
         <link href="<?=base_url();?>asset/sweetalert2/sweetalert2.min.css" rel="stylesheet">
 
         <!-- my custom css -->
-        <link rel="stylesheet" href="<?=base_url();?>css/adminmain.css">
-
+        <link rel="stylesheet" href="<?=base_url();?>css/mysite.css">
 
         <!-- cookieconsent -->
         <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css"> -->
@@ -51,78 +50,106 @@
 
         <!-- Top navbar -->
         <div class="d-navbar">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    
-                    <!-- Brand / Logo -->
-                    <a class="" href="/admin/">
-                        <img src="<?=base_url();?>/img-default/weblogo.png" alt="Avatar Logo" style="width:30px;" class="rounded-pill"> 
-                    </a>
-                    
-                    <!-- Toggler for mobile -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                            data-bs-target="#navbarContent" aria-controls="navbarContent" 
-                            aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- <span class="navbar-toggler-icon"></span> -->
-                    <span class="py-2"><i class="bi bi-grid"></i></span>
-                    </button>
-
-                    <!-- Collapsible content -->
-                    <div class="collapse navbar-collapse" id="navbarContent">
-                        <!-- Left side menu items -->
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                            
-                            <!-- Example Dropdown (kept from before) -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" 
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Services
+            <nav class="navbar navbar-expand-lg bg-primary-subtle">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="./img-default/weblogo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./mysite">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-current="page" href="./page/noodle.php">Noodle Shop</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./landing.php">landing</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="https://aonitcmtc.github.io/Portfolio/">Portfolio</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Project
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" target="_blank" href="./drive">myDrive</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="#">002</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="#">003</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Chart stock
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" target="_blank" href="/chart/xauusd">XAUUSD</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="#">002</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="#">003</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" target="_blank" href="#">chart</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="#">statistic</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="#">news</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Social
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="https://www.facebook.com/">
+                                facebook
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Web Development</a></li>
-                                    <li><a class="dropdown-item" href="#">Mobile Apps</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Consulting</a></li>
-                                    <li><a class="dropdown-item" href="#">SEO & Marketing</a></li>
-                                </ul>
                             </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="https://www.instagram.com/">
+                                instargram
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="https://www.blockdit.com/followdmoney">
+                                blockdit
+                                </a>
                             </li>
                         </ul>
+                    </li>
+                </ul>
+            </div>
 
-                        <!-- Right side: User Profile Dropdown (replaces search) -->
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">  <!-- ms-auto pushes to right -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" 
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/configure-tunnels/local-management/as-a-service/linux/ -->
+            <!-- <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Search">
+                <button class="btn btn-primary" type="button">Search</button>
+                <hr>
+                <a href="./controller/logoutController.php">
+                    <button class="btn btn-danger mx-2" type="button">Logout</button>
+                </a>
+            </form> -->
 
-                                    <!-- Optional: User avatar/icon -->
-                                    <?php $devprofiles = base_url().'/img-default/devprofile.png' ?>
-                                    <!-- <i class="bi bi-person-circle fs-4 me-2"></i> -->
-                                    <img src="<?= $session->member_img ?? $devprofiles; ?>" 
-                                        alt="Avatar Logo" style="width:30px;" class="rounded-pill"> 
-                                    &ensp;
-                                    <span class="mx-2"><?= $session->member_name ?></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">  <!-- dropdown-menu-end aligns menu to the right edge -->
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-danger" href="/admin/logout">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <p class="text-secondary">
+                <i class="bi bi-people"></i>
+                <small><?= $count_view ?></small>
+            </p> 
+            &ensp;&ensp;&ensp;
+            <p class="text-dark">
+                <i class="bi bi-moon-stars-fill"></i>
+            </p> 
+        </div>
+    </nav>
 
             <!-- <nav class="navbar navbar-expand-lg bg-primary navbar-light bg-87A2FF">
                 <div class="container-fluid">

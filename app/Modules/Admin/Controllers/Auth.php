@@ -27,16 +27,19 @@ class Auth extends BaseController
 
     public function login()
     {
+        $getUserActive = $this->curlRequest('users/countuseractive', 'GET');
+        $userActive = json_decode($getUserActive, true);
+        // print_r($logmysite['count']);die();
+
         // Simple protection (you can also use Filter - recommended)
         $data = [
             'title'      => 'Admin',
-            'admin_name' => session()->get('admin_name') ?? 'Admin'
+            'user_active'      => $userActive['count'] ?? 'wait...',
+            'user_login'      => 'wait...',
+            'admin_name' => session()->get('admin_name') ?? 'no_access token'
         ];
 
-        return view('App\Admin\Views\login', [
-            'title'   => $data['title'],
-            'content' => ''
-        ]);
+        return view('App\Admin\Views\login', $data);
     }
 
     public function logout()

@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+}
+
+.landingpage { padding: 0; overflow-x: hidden;}
+
+.h-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+.v-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color: #f1f1f1;
+    position: fixed;
+    top: 50px;
+    height: 100%;
+    overflow: auto;
+}
+
+.v-li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.v-li a.active {
+    background-color:rgb(99, 160, 239);
+    color: white;
+}
+
+.v-li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.screen {
+    /* position: fixed; */
+    /* top: 50px; */
+    margin-left:20%;
+    margin-top:90px;
+    /* padding:1px 16px; */
+    width: 80%;
+    height:756px;
+    /* overflow: auto;    */
+}
+
+.pd-src {
+    padding:8px 16px;
+}
+
+.d-navbar {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    /* height: 632px; */
+    overflow: auto;
+}
+
+.dropdown-menu {
+    /* position: absolute; */
+    z-index: 999;
+}
+
+.footer {
+    /* position: fixed;
+    bottom: 0; */
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    min-height:48px;
+    background-color: #555;
+}
+
+.li-dropdown:active { 
+    background-color: red; 
+} 
+
+.crop-text-nav { 
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis; 
+    width:100px; 
+}
+
+.crop-text-nav-hor { 
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis; 
+    width:300px; 
+}
+
+@media (max-width: 900px) {
+    .d-flex {
+        margin-bottom: 18px;
+    }
+
+    .crop-text-nav-hor { 
+        overflow:hidden; 
+        white-space:nowrap; 
+        text-overflow:ellipsis; 
+        width:80px; 
+    }
+}

@@ -57,13 +57,60 @@
 
     <div class="row">
         <div class="col-12 bg-dark">
-            <div class="text-center p-2 mt-5">
-                <h2 class="text-light">XAUUSD</h2>
+            
+
+            <div class="d-chartbg pt-4">
+                <div class="text-center p-2 mt-3">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="text-light p-4">
+                                <h1 class="text-warning">ตลาด COMEX (Commodity Exchange Inc.)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- chartContainer -->
+                <div id="chartContainer"></div>
             </div>
 
-            
-            <div class="d-chartbg mt-3 pt-4">
-                <div id="chartContainer"></div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 p-5 text-light">
+                    <p class="text-start fs-5 text-secondary">
+                        &emsp;&emsp;&emsp; ตลาด COMEX คือ <strong>ตลาดซื้อขายสินค้าล่วงหน้า (Futures)</strong> และ 
+                        <strong>ออปชั่น (Options)</strong> ที่ใหญ่ที่สุดในโลกสำหรับโลหะมีค่า 
+                        ตั้งอยู่ในนิวยอร์ก สหรัฐอเมริกา และเป็นส่วนหนึ่งของ CME Group 
+                        โดยเป็นศูนย์กลางกำหนดราคาทองคำ เงิน ทองแดง และโลหะอื่น ๆ ที่สำคัญระดับโลก
+                    </p>
+                    
+                    
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-9 text-start p-2 text-secondary">
+                            <div class="text-center mt-2">
+                                <h5>ข้อมูลสำคัญของตลาด COMEX</h5>
+                            </div>
+                            <div class="text-start mt-3">
+                                <li><strong>ประวัติ:</strong> ก่อตั้งในปี 1933 และควบรวมกิจการกับ NYMEX ในปี 1994 ก่อนเป็นส่วนหนึ่งของ CME Group ในปี 2008</li>
+                                <li><strong>สินค้าหลัก:</strong> โลหะมีค่า (ทองคำ, เงิน, แพลทินัม, แพลเลเดียม) และโลหะพื้นฐาน (ทองแดง, อลูมิเนียม)</li>
+                                <li><strong>ความสำคัญ:</strong> เป็นแหล่งอ้างอิงราคาซื้อขายทองคำและโลหะล่วงหน้าที่สำคัญที่สุดในโลก (Global Benchmark)</li>
+                                <li><strong>ผู้เข้าร่วม:</strong> นักลงทุน สถาบันการเงิน ผู้ผลิต และผู้บริโภคที่ต้องการเก็งกำไรหรือป้องกันความเสี่ยง (Hedging) จากความผันผวนของราคาโลหะ</li>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-9">
+                            <div class="text-center text-primary my-3">
+                                <strong>รูปแบบการซื้อขาย</strong>
+                                <small>
+                                    ผู้ซื้อขายส่วนใหญ่ใน COMEX จะใช้การซื้อขายสัญญาที่ชำระราคาเงินสดและการส่งมอบโลหะในอนาคต 
+                                    โดยมีการซื้อขายผ่านระบบอิเล็กทรอนิกส์ตลอด 24 ชั่วโมงในวันทำการ
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -125,11 +172,11 @@
                 datetime: new Date().toISOString(),
                 thdate: dateTime,
                 price: valueline[1],
-                des: valueline[0]
+                des: 'usd/kg : '+valueline[0]
             };
 
-            console.log("[Obj payload]");
-            console.log(payload);
+            // console.log("[Obj payload]");
+            // console.log(payload);
 
             $.ajax({
                 url: 'https://script.google.com/macros/s/AKfycbz__Eq2Z14gX-R8hQ7x6IsQ89zQYgcU3yZa-7CIrym5yq_m7t8FRVlFtSiig0fbjgHF/exec',
@@ -198,13 +245,44 @@
             // });
         }
 
+        function setTitlePrice() {
+            var valueline = [];
+            $('.highcharts-plot-line-label').each(function(index){
+                // ดึงข้อความของแต่ละ element
+                var text = $(this).text();
+
+                // แสดงผลหรือเก็บไว้ใน array
+                // console.log("Element " + index + ": " + text);
+                valueline[index] = text;
+            });
+
+            // if(valueline != undifined) $('title').text(`Gold ${valueline[0]}`);
+            if(valueline && valueline[1]) {
+                document.title = `Gold ${valueline[1]} usd`;
+            } else {
+                document.title = `Gold Price USD`;
+            }
+            
+        }
+         
+
         $(document).ready(function(){
             // getPrice(); // first load
             setInterval(getPrice, 60000);
+            setInterval(setTitlePrice, 1000*5); // 5sec
+            
 
             setTimeout(function() {
                 console.log("getData Chart [1]");
                 getPrice();
+
+                $('#jschart_popup').hide();
+                $('#jschart_pricealert').hide();
+                $('a[href="https://www.bullionvault.com/price-alerts.do"]').hide();
+                $('#jschart_timestamp').text('@bullionvault');
+
+                
+
             }, 2000);
 
         });

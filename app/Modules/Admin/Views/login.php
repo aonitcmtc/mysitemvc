@@ -67,10 +67,11 @@
                     <h4 class="text-secondary">Login to Workspace</h4>
 
                     <i class="bi bi-person-fill-check text-light"></i>
-                    <span class="text-light">2</span>&emsp;
+                    <span class="text-light"><?= $user_active ?></span>&emsp;
 
-                    <i class="bi bi-sunglasses text-light"></i>
-                    <span class="text-light">2</span>
+                    <!-- <i class="bi bi-sunglasses text-light"></i> -->
+                    <i class="bi bi-person-walking text-light"></i>
+                    <span class="text-light"><?= $user_login ?></span>
 
 
                 </div>

@@ -1,5 +1,30 @@
 <style>
+    /* #end_node { visibility: hidden;} */
     /* style costom only page */
+    @media (max-width: 900px) {
+
+        .d-workspace {
+            height: auto;
+            max-height: 100vh; /* grows with content but capped */
+            overflow-y: auto;
+
+        }
+
+        .d-navbar { padding: 0 8px;}
+
+        .mindmap {
+            height: 180px;
+        }
+
+        #company {z-index: 16; top: 110%; left: 50%;  transform: translateX(-50%);}
+        #risk {z-index: 15; top: 160%; left: 50%;  transform: translateX(-50%);}
+        #business {z-index: 14; top: 210%; left: 50%;  transform: translateX(-50%);}
+        #management {z-index: 13; top: 260%; left: 50%;  transform: translateX(-50%);}
+        #finances {z-index: 12; top: 310%; left: 50%;  transform: translateX(-50%);}
+        #market {z-index: 11; top: 360%; left: 50%;  transform: translateX(-50%);}
+        #products {z-index: 10; top: 410%; left: 50%;  transform: translateX(-50%);}
+        /* #end_node {top: 450%; left: 50%;  transform: translateX(-50%); height:20px;} */
+    }
 </style>
 
 <div class="container">
@@ -123,7 +148,8 @@
                                     • <a class="text-decoration-none text-light" href="#Resources">Resources</a><br>
                                     • <a class="text-decoration-none text-light" href="#Partners">Partners</a><br>
                                     • <a class="text-decoration-none text-light" href="#Cost_structures">Cost structures</a><br>
-                                    • <a class="text-decoration-none text-light" href="#Revenue_streams">Revenue streams</a>
+                                    • <a class="text-decoration-none text-light" href="#Revenue_streams">Revenue streams</a><br>
+                                    • <a class="text-decoration-none text-light" href="/admin/devcode">Test Code</a>
                                 </div>
                             </div>
 
@@ -137,6 +163,7 @@
                                 </div>
                             </div>
 
+                            <!-- <div id="end_node" class="node"></div> -->
                         </div>
 
                         <div style="margin-top:60px; color:#64748b; font-size:0.9rem;">
