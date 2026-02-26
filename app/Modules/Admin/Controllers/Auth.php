@@ -31,11 +31,14 @@ class Auth extends BaseController
         $userActive = json_decode($getUserActive, true);
         // print_r($logmysite['count']);die();
 
+        $getAdminLogin = $this->curlRequest('logadmin/countall', 'GET');
+        $countlogin = json_decode($getAdminLogin, true);
+
         // Simple protection (you can also use Filter - recommended)
         $data = [
             'title'      => 'Admin',
             'user_active'      => $userActive['count'] ?? 'wait...',
-            'user_login'      => 'wait...',
+            'user_login'      => $countlogin['count'] ?? 'wait...',
             'admin_name' => session()->get('admin_name') ?? 'no_access token'
         ];
 
@@ -76,12 +79,28 @@ class Auth extends BaseController
         // echo $email.'</br>';
         // echo $password.'</br>';
 
-        $url_api = "https://conn.myexpress-api.click/api/auth/login";
+        $url_api = "https://conn.myexpress-api.click/api/auth/login"; // prod
+        // $url_api = "http://localhost:3000/api/auth/login"; // dev
+        $ip = $request->getIPAddress();
+        $agent = mb_convert_encoding($request->getUserAgent(), "UTF-8", "auto");
+        $visited_at = date('Y-m-d H:i:s');
 
         $data = [
             "email" => $email,
-            "password" => $password
+            "password" => $password,
+            "ip" => $ip,
+            "agent" => $agent,
+            "visited_at" => $visited_at
         ];
+
+        $postData = [
+            'path' => '/mysite', // langing page
+            'ip' => $ip,
+            'agent' => $agent,
+            'url' => current_url(),
+            'visited_at'=> $visited_at
+        ];
+        // print_r($data); die();
 
         try {
             $ch = curl_init($url_api);
@@ -92,7 +111,6 @@ class Auth extends BaseController
                 'Content-Type: application/json'
             ]);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-            
             $response = curl_exec($ch);
 
             if (curl_errno($ch)) {

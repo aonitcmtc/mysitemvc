@@ -1,12 +1,9 @@
-<?php if (session()->has('access_token')): ?>
-
-    <!DOCTYPE html>
-    <html lang="th">
+<!DOCTYPE html>
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title><?= esc($title ?? 'mySite') ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="shortcut icon" type="image/png" href="../favicon.ico"> -->
         <link rel="shortcut icon" type="image/png" href="<?=base_url();?><?= esc($favicon ?? 'homemysite.ico') ?>">
 
         <!-- Bootstrap 5 -->
@@ -53,7 +50,7 @@
             <nav class="navbar navbar-expand-lg bg-primary-subtle">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="./img-default/weblogo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+                <img src="<?=base_url();?>img-default/weblogo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -61,13 +58,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./mysite">Home</a>
+                        <a class="nav-link active" aria-current="page" href="<?=base_url();?>mysite">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-current="page" href="./page/noodle.php">Noodle Shop</a>
+                        <a class="nav-link disabled" aria-current="page" href="<?=base_url();?>page/noodle.php">Noodle Shop</a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./landing.php">landing</a>
+                        <a class="nav-link active" aria-current="page" href="<?=base_url();?>landing.php">landing</a>
                     </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="https://aonitcmtc.github.io/Portfolio/">Portfolio</a>
@@ -80,7 +77,7 @@
                             My Project
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" target="_blank" href="./drive">myDrive</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="<?=base_url();?>drive">myDrive</a></li>
                             <li><a class="dropdown-item" target="_blank" href="#">002</a></li>
                             <li><a class="dropdown-item" target="_blank" href="#">003</a></li>
                         </ul>
@@ -135,7 +132,7 @@
                 <input class="form-control me-2" type="text" placeholder="Search">
                 <button class="btn btn-primary" type="button">Search</button>
                 <hr>
-                <a href="./controller/logoutController.php">
+                <a href="<?=base_url();?>controller/logoutController.php">
                     <button class="btn btn-danger mx-2" type="button">Logout</button>
                 </a>
             </form> -->
@@ -184,75 +181,7 @@
         <!-- scripts -->
 
         <!-- <script type="module" src="cookieconsent-config.js"></script> --> <!-- is Admin page not Active -->
-        <!-- <script type="module" src="./../asset/iscookie/cookieconsent-config.js"></script> -->
+        <!-- <script type="module" src="/asset/iscookie/cookieconsent-config.js"></script> -->
         <!-- <script type="module" src="/asset/"></script> -->
-
-        <script>
-            // 15 minutes inactivity = auto logout
-            const TIMEOUT_MS = 15 * 60 * 1000;  // 900,000 ms
-
-            let idleTimer;
-            let warningTimer;
-
-            function alertTimeout() {
-                Swal.fire({
-                    title: "System Time Out.",
-                    html: "Logout as Time <b></b> milliseconds.",
-                    width: 600,
-                    padding: "3em",
-                    color: "#c81212",
-                    // background: "#fff url(/images/trees.png)",
-                    backdrop: `
-                        #c9252366
-                    `,
-                    // backdrop: `
-                    //     rgba(0,0,123,0.4)
-                    //     // url("/images/nyan-cat.gif")
-                    //     left top
-                    //     no-repeat
-                    // `,
-                    timer: 60000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading();
-                        const timer = Swal.getPopup().querySelector("b");
-                        timerInterval = setInterval(() => {
-                        timer.textContent = `${Swal.getTimerLeft()}`;
-                        }, 100);
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval);
-                        window.location.reload();
-                    }
-                });
-            }
-
-            function resetActivityTimer() {
-                clearTimeout(idleTimer);
-                clearTimeout(warningTimer);
-
-                // Optional: warn user 1 minute before logout
-                warningTimer = setTimeout(() => {
-                    // alert("Warning: Due to no mouse/keyboard activity, you will be logged out in 1 minute.\nMove mouse or press any key to stay logged in.");
-                    alertTimeout();
-                }, TIMEOUT_MS - 60000);
-
-                // Logout exactly at 15 min
-                idleTimer = setTimeout(() => {
-                    alert("Logged out due to 15 minutes inactivity (no mouse movement or other activity).");
-                    window.location.href = "<?= site_url('admin/logout') ?>";
-                }, TIMEOUT_MS);
-            }
-
-            // Listen to real user activity events (mouse, keyboard, touch, scroll)
-            const events = ['mousemove', 'mousedown', 'keydown', 'scroll', 'touchstart'];
-            events.forEach(event => {
-                document.addEventListener(event, resetActivityTimer, { passive: true });
-            });
-
-            // Start timer when page loads
-            resetActivityTimer();
-        </script>
     </body>
-    </html>
-<?php endif; ?>
+</html>

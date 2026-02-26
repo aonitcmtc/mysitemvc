@@ -258,7 +258,7 @@
 
             // if(valueline != undifined) $('title').text(`Gold ${valueline[0]}`);
             if(valueline && valueline[1]) {
-                document.title = `Gold ${valueline[1]} usd`;
+                document.title = `Gold ${valueline[1]} USD/oz`;
             } else {
                 document.title = `Gold Price USD`;
             }

@@ -4,17 +4,17 @@
         <title>mysite-aonitcmtc</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/png" href="./img-default/catlogo_ico.png">
+        <link rel="shortcut icon" type="image/png" href="<?=base_url();?>img-default/catlogo_ico.png">
 
-        <link href="./asset/bootstrap.min.css" rel="stylesheet">
-        <script src="./asset/bootstrap.bundle.min.js"></script>
+        <link href="<?=base_url();?>asset/bootstrap.min.css" rel="stylesheet">
+        <script src="<?=base_url();?>asset/bootstrap.bundle.min.js"></script>
 
-        <script src="./asset/jquery.slim.min.js"></script>
-        <script src="./asset/popper.min.js"></script>
+        <script src="<?=base_url();?>asset/jquery.slim.min.js"></script>
+        <script src="<?=base_url();?>asset/popper.min.js"></script>
 
-        <!-- <link href="./asset/font-awesome.min.css" rel="stylesheet"> -->
+        <!-- <link href="<?=base_url();?>asset/font-awesome.min.css" rel="stylesheet"> -->
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-        <link rel="stylesheet" href="./asset/bootstrap-icons/bootstrap-icons.css">
+        <link rel="stylesheet" href="<?=base_url();?>asset/bootstrap-icons/bootstrap-icons.css">
     </head>
     <body>
 
@@ -27,7 +27,7 @@
             padding: 0; 
             /* margin-top: 500px; */
 
-            background-image: url("./img-default/landing-cover.png");
+            background-image: url("<?=base_url();?>img-default/landing-cover.png");
             background-repeat: no-repeat;
             background-color: #000; /* Used if the image is unavailable */
             height: 200vh; /* You must set a specified height */
@@ -36,7 +36,7 @@
         }
 
         .btn-navigation {
-            margin-top: 150vh;
+            margin-top: 145vh;
         }
 
         .btn-lg {
@@ -93,6 +93,7 @@
             /* top: 50px; */
             margin-left:20%;
             margin-top:90px;
+            /* margin-bottom:90px; */
             /* padding:1px 16px; */
             width: 80%;
             height:756px;
@@ -181,7 +182,7 @@
             <nav class="navbar navbar-expand-lg bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <img src="./images/weblogo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+                        <img src="<?=base_url();?>images/weblogo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -189,10 +190,10 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link text-light active" aria-current="page" href="./">Home</a>
+                                <a class="nav-link text-light active" aria-current="page" href="<?=base_url();?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light active" aria-current="page" href="./landing.php">Landing Page</a>
+                                <a class="nav-link text-light active" aria-current="page" href="<?=base_url();?>landing.php">Landing Page</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://aonitcmtc.github.io/Portfolio/">Portfolio</a>
@@ -218,7 +219,7 @@
                         <input class="form-control me-2" type="text" placeholder="Search">
                         <button class="btn btn-primary" type="button">Search</button>
                         <hr>
-                        <a href="./controller/logoutController.php">
+                        <a href="<?=base_url();?>controller/logoutController.php">
                             <button class="btn btn-danger mx-2" type="button">Logout</button>
                         </a>
                     </form>
@@ -242,21 +243,21 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img src="./public/img-default/newproducts.png" class="d-block h-shoping" alt="...">
+                            <img src="<?=base_url();?>public/img-default/newproducts.png" class="d-block h-shoping" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>First slide label</h5>
                                 <p>Some representative placeholder content for the first slide.</p>
                             </div>
                             </div>
                             <div class="carousel-item">
-                            <img src="./public/img-default/newproducts2.png" class="d-block h-shoping" alt="...">
+                            <img src="<?=base_url();?>public/img-default/newproducts2.png" class="d-block h-shoping" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
                                 <p>Some representative placeholder content for the second slide.</p>
                             </div>
                             </div>
                             <div class="carousel-item">
-                            <img src="./public/img-default/newproducts3.png" class="d-block h-shoping" alt="...">
+                            <img src="<?=base_url();?>public/img-default/newproducts3.png" class="d-block h-shoping" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
                                 <p>Some representative placeholder content for the third slide.</p>
@@ -305,7 +306,7 @@
             <div class="btn-navigation">
                 <div class="row justify-content-center">
                     <div class="col-6 text-end mb-3">
-                        <a href="./mysite">
+                        <a href="<?=base_url();?>mysite">
                             <button class="btn btn-lg btn-outline-light mx-4" type="button">&emsp; My Site &emsp;</button>
                         </a>
                     </div>
@@ -315,8 +316,8 @@
                         </a>
                     </div>
                     
-                    <div class="col-6 text-center mt-3">
-                        <a href="./admin" target="_blank">
+                    <div class="col-6 text-center my-3">
+                        <a href="<?=base_url();?>admin" target="_blank">
                             <button class="btn btn-lg btn-outline-light mx-4" type="button">&emsp; Admin site &emsp;</button>
                         </a>
                     </div>
