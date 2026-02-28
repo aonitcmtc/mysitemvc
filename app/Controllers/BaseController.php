@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Aws\S3\S3Client;
 
 /**
  * BaseController provides a convenient place for loading components
@@ -45,19 +46,65 @@ abstract class BaseController extends Controller
 
     protected $helpers = [];
 
-    protected function curlRequest($url, $method = 'GET', $data = [], $headers = [])
+    protected function curlRequestAuth($url, $method = 'GET', $data = [], $headers = [])
+    {
+        $session = session();
+        $access_token = $session->get('access_token');
+        // die('[accessToken] : '.$access_token);
+
+        $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_URL, 'https://conn.myexpress-api.click/api/'.$url); // prod
+        curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/'.$url); //dev 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $headers = [
+            "Content-Type: application/json",
+            "Authorization: Bearer ".$access_token,
+        ];
+
+        // ตั้งค่า Method
+        if (strtoupper($method) === 'POST') {
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        } elseif (in_array(strtoupper($method), ['PUT','DELETE'])) {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($method));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        }
+        
+        // Default Header สำหรับ JSON
+        // if (empty($headers)) {
+        //     $headers = [
+        //         "Content-Type: application/json",
+        //     ];
+        // }
+        
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        
+        $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            $error_msg = curl_error($ch);
+            curl_close($ch);
+            return ['error' => $error_msg];
+        }
+        curl_close($ch);
+        // $decode = json_decode($response, true);
+        // print_r($decode); die();
+
+        return $response;
+    }
+
+    protected function curlRequestToken($url, $method = 'GET', $data = [], $headers = [])
     {
         $session = session();
         
-        $access_token = $session->get('access_token');
-        if (empty($access_token) || $access_token == 'session-login') {
+        $access_token = $session->get('access_token_public');
+        if (empty($access_token) || $session->get('access_token_public')) {
             $this->getTokenAPI();
-            $access_token = $session->get('access_token');
+            $access_token = $session->get('access_token_public');
             // die($access_token);
         }
 
         $ch = curl_init();
-        
         curl_setopt($ch, CURLOPT_URL, 'https://conn.myexpress-api.click/api/'.$url); // prod
         // curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/'.$url); //dev 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -92,13 +139,15 @@ abstract class BaseController extends Controller
             return ['error' => $error_msg];
         }
         curl_close($ch);
-        $decode = json_decode($response, true);
+        // $decode = json_decode($response, true);
+        // print_r($decode); die();
 
-        $message = $decode['message'] ?? '';
-        if($message == 'Invalid token') {
-            $this->getTokenAPI();
-            $access_token = $session->get('access_token');
-        } 
+        // $message = $decode['message'] ?? '';
+        // if($message == 'Invalid token') {
+        //     $this->getTokenAPI();
+        //     $access_token = $session->get('access_token');
+        // } 
+
         return $response;
     }
 
@@ -126,8 +175,8 @@ abstract class BaseController extends Controller
             curl_close($ch);
             $data = json_decode($response, true);
             // print_r($response); die('res');
-            $access_token = $data['accessToken'] ?? 'session-login';
-            $refresh_token = $data['refreshToken'] ?? 'session-login';
+            $access_token = $data['accessToken'] ?? 'session-login-public';
+            $refresh_token = $data['refreshToken'] ?? 'session-login-public';
 
             // if($access_token == 'session-login'){
             //     echo 'Error :: access_token is not define!!! Plese your check api or database connecting.......';
@@ -135,12 +184,47 @@ abstract class BaseController extends Controller
             // }
             
             $session = session();
-            $session->set('access_token', $access_token);
-            $session->set('refresh_token', $refresh_token);
+            $session->set('access_token_public', $access_token);
+            $session->set('refresh_token_public', $refresh_token);
             // print_r($data);
             // die('data');
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage(); // Output: Error: Cannot divide by zero
+        }
+    }
+
+    protected function getImage($img = 'devprofiles.PNG')
+    {
+        $client = new S3Client([
+            'version' => 'latest',
+            'region'  => 'us-east-1', // ใส่อะไรก็ได้สำหรับ MinIO
+            'endpoint' => 'http://drive.myexpress-api.click',
+            'use_path_style_endpoint' => true, // สำคัญสำหรับ MinIO
+            'credentials' => [
+                'key'    => 'minioadmin',
+                'secret' => 'minioadmin121',
+            ],
+        ]);
+
+        try {
+            // die('try [img]:'.$fileName);
+            $cmd = $client->getCommand('GetObject', [
+                'Bucket' => 'userspublish',
+                'Key'    => 'memberprofiles/' . $img,
+            ]);
+
+            // 5 นาที
+            $request = $client->createPresignedRequest($cmd, '+15 minutes');
+
+            $url_profile = (string) $request->getUri();
+
+            // echo $url_profile;
+            // die();
+
+            return $url_profile;
+        } catch (Exception $e) {
+            // echo $e->getMessage();
+            return 'ERROR >> getImage!!!';
         }
     }
 

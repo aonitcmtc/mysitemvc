@@ -27,7 +27,7 @@
         <link href="<?=base_url();?>asset/sweetalert2/sweetalert2.min.css" rel="stylesheet">
 
         <!-- my custom css -->
-        <link rel="stylesheet" href="<?=base_url();?>css/adminmain.css">
+        <link href="<?=base_url();?>css/adminmain.css" rel="stylesheet">
 
 
         <!-- cookieconsent -->
@@ -37,6 +37,12 @@
         <style>
             .navbar-nav {
                 --bs-nav-link-padding-y: 0; /* remove padding y */
+            }
+
+            .table-outer-rounded {
+                border-radius: 18px;
+                overflow: hidden;
+                box-shadow: 0 4px 20px #00000014;
             }
 
             @media (max-width: 900px) {

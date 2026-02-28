@@ -4,7 +4,7 @@
     <title>Admin Auth</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="../img-default/catlogo_ico.png">
+    <link rel="shortcut icon" type="image/png" href="<?=base_url();?>img-default/catlogo_ico.png">
 
 
     <link href="<?=base_url();?>asset/bootstrap462.min.css" rel="stylesheet">
@@ -15,6 +15,9 @@
     <!-- CSS ICONS -->
     <link href="<?=base_url();?>asset/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
     <link href="<?=base_url();?>asset/fontawesome4/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script src="<?=base_url();?>asset/jquery-3.7.1.min.js"></script>
 
     <!-- cookieconsent -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css"> -->
@@ -28,13 +31,15 @@
         padding: 0; 
         /* margin-top: 500px; */
 
-        background-image: url("../img-default/logincover2.jpg");
+        background-image: url("<?=base_url();?>img-default/logincover2.jpg");
         background-repeat: no-repeat;
         background-color: #000; /* Used if the image is unavailable */
         height: 100vh; /* You must set a specified height */
         background-position: center; /* Center the image */
         background-size: cover; /* Resize the background image to cover the entire container */
     }
+
+    #showdetail { font-size: 12px;}
 
     .d-login {
         padding: 2rem; 
@@ -79,13 +84,13 @@
                 <div class="row">
                     <div class="col-12 text-center my-2">
                     <!-- https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg -->
-                    <img src="../img-default/loginlogo.jpg" 
+                    <img src="<?=base_url();?>img-default/loginlogo.jpg" 
                         class="rounded-circle" alt="image Profile" width="140" height="140">
                     </div>
                 </div>
                 <!-- <p>In this example, we use <code>.was-validated</code> to indicate what's missing before submitting the form:</p> -->
                 <div class="my-3">
-                    <form action="./checklogin" method="POST" id="form_login" class="was-validated-unactive">
+                    <form action="<?=base_url();?>admin/checklogin" method="POST" id="form_login" class="was-validated-unactive">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
@@ -97,6 +102,9 @@
                             <!-- <div class="valid-feedback">กรุณากรอก Password</div> -->
                         </div>
 
+                        <input type="hidden" name="ip" id="ip">
+                        <input type="hidden" name="detail" id="detail">
+
                         <button type="botton" id="login" class="btn btn-outline-light btn-block">Login</button>
                         <a href="/admin/register" class="btn btn-outline-warning btn-block mt-2 text-decoration-none">
                             Register
@@ -104,7 +112,11 @@
                     </form>
                 </div>
             </div>
-            
+
+        </div>
+        
+        <div class="col-12 text-center">
+            <span id="showdetail"></span>
         </div>
     </div>
 </div>
@@ -114,7 +126,7 @@
 </div>
 
 <!-- <script type="module" src="cookieconsent-config.js"></script> -->
-<!-- <script type="module" src="./../asset/iscookie/cookieconsent-config.js"></script> -->
+<!-- <script type="module" src="asset/iscookie/cookieconsent-config.js"></script> -->
 <!-- <script type="module" src="/asset/"></script> -->
 <script>
     $(document).ready(function(){
@@ -128,6 +140,47 @@
             }
 
         });
+
+        // $.ajax({
+        //     url: 'https://api.ipify.org?format=json',
+        //     method: 'GET',
+        //     contentType: 'text/plain; charset=utf-8',   // ← key change
+        //     processData: false,
+        //     success: function(res) {
+        //         console.log("api.ipify:");
+        //         console.log("IP:", res.ip);
+        //     },
+        //     error: function(xhr, textStatus, error) {
+        //         console.error(textStatus, error, xhr.status, xhr.responseText);
+        //     }
+        // });
+
+        $.ajax({
+            url: 'https://ipinfo.io/json?token=507072ba246a48',
+            method: 'GET',
+            contentType: 'text/plain; charset=utf-8',   // ← key change
+            processData: false,
+            success: function(res) {
+                // console.log("ipinfo:");
+                // console.log("IP:", res.ip);
+                // console.log("City:", res.city);
+                // console.log("Region:", res.region);
+                // console.log("Country:", res.country);
+                // console.log("ISP:", res.org);
+
+                const ip = res.ip;
+                const detail = `${res.ip} >>> ${res.city} ${res.region} ${res.country} ${res.org}`;
+                const show_detail = `${res.city}, ${res.region}, ${res.country}, ${res.org}`;
+
+                $('#ip').val(ip);
+                $('#detail').val(detail);
+                $('#showdetail').text(show_detail);
+            },
+            error: function(xhr, textStatus, error) {
+                console.error(textStatus, error, xhr.status, xhr.responseText);
+            }
+        });
+
     });
 </script>
 </body>

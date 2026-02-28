@@ -18,11 +18,11 @@ class Home extends BaseController
         ];
         // print_r($postData);die();
 
-        $response = $this->curlRequest('logmysite/add', 'POST', $postData);
+        $response = $this->curlRequestToken('logmysite/add', 'POST', $postData);
         $decode = json_decode($response, true);
         // add log_visitor_landing
 
-        $get = $this->curlRequest('logmysite/countlanding', 'GET');
+        $get = $this->curlRequestToken('logmysite/countlanding', 'GET');
         $logmysite = json_decode($get, true);
 
         // print_r($logmysite['count']);die();

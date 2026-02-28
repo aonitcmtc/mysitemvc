@@ -1,3 +1,6 @@
+# composer
+composer require aws/aws-sdk-php
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?

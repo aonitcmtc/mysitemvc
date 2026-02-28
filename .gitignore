@@ -127,3 +127,5 @@ _modules/*
 
 # dev conf commit to prod
 app/Config/App.php
+.gitignore
+sql_import/nationality.sql

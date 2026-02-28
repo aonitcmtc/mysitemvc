@@ -27,11 +27,12 @@ class Auth extends BaseController
 
     public function login()
     {
-        $getUserActive = $this->curlRequest('users/countuseractive', 'GET');
+        // curlRequest :: แยกเส้นทาง AdminAuth && public Token
+        $getUserActive = $this->curlRequestToken('users/countuseractive', 'GET');
         $userActive = json_decode($getUserActive, true);
         // print_r($logmysite['count']);die();
 
-        $getAdminLogin = $this->curlRequest('logadmin/countall', 'GET');
+        $getAdminLogin = $this->curlRequestToken('logadmin/countall', 'GET');
         $countlogin = json_decode($getAdminLogin, true);
 
         // Simple protection (you can also use Filter - recommended)
@@ -41,7 +42,7 @@ class Auth extends BaseController
             'user_login'      => $countlogin['count'] ?? 'wait...',
             'admin_name' => session()->get('admin_name') ?? 'no_access token'
         ];
-
+        
         return view('App\Admin\Views\login', $data);
     }
 
@@ -76,12 +77,12 @@ class Auth extends BaseController
         $email = $post['email'];
         $password = $post['password'];
 
-        // echo $email.'</br>';
-        // echo $password.'</br>';
+        // $ip = $request->getIPAddress();
+        $ip = $post['ip'];
+        $detail = $post['detail'];
 
         $url_api = "https://conn.myexpress-api.click/api/auth/login"; // prod
         // $url_api = "http://localhost:3000/api/auth/login"; // dev
-        $ip = $request->getIPAddress();
         $agent = mb_convert_encoding($request->getUserAgent(), "UTF-8", "auto");
         $visited_at = date('Y-m-d H:i:s');
 
@@ -89,7 +90,7 @@ class Auth extends BaseController
             "email" => $email,
             "password" => $password,
             "ip" => $ip,
-            "agent" => $agent,
+            "agent" => $agent.' [a/d] '.$detail,
             "visited_at" => $visited_at
         ];
 

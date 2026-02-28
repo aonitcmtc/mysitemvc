@@ -88,7 +88,7 @@
                                     • <a class="text-decoration-none text-light" href="#Organizational_structure">Organizational structure</a><br>
                                     • <a class="text-decoration-none text-light" href="#Managerial_team">Managerial team</a><br>
                                     • <a class="text-decoration-none text-light" href="/admin/dashboard">Dashboard</a><br>
-                                    • <a class="text-decoration-none text-light" href="/admin/users">User</a><br>
+                                    • <a class="text-decoration-none text-light" href="/admin/users">Users</a><br>
                                     • <a class="text-decoration-none text-light" href="/admin/report">Report</a><br>
                                     • <a class="text-decoration-none text-light" href="/admin/apitest">API test</a><br>
                                     <!-- • <a class="text-decoration-none text-light" href="#aaaa1">AAA</a><br>

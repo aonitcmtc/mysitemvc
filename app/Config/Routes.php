@@ -8,6 +8,10 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/powerby', 'Home::powerby');
 $routes->get('/mysite', 'Mysite::index');
+$routes->get('/navleft', 'Mysite::navleft');
+$routes->get('/navleftelectic', 'Mysite::navleftelectic');
+$routes->get('/member', 'Mysite::member');
+$routes->get('/mytemp', 'Mysite::mytemp'); // page tempage copy index
 $routes->get('/chart/xauusd', 'Chart::xauusd');
 
 // Admin area
@@ -15,8 +19,11 @@ $routes->group('admin', ['namespace' => 'App\Admin\Controllers', 'filter' => 'ad
     
     // $routes->match(['get', 'post'],'login', 'Auth::login');
     $routes->get('/',              'Index::index');
+    $routes->get('devcode',          'Index::devcode');
     $routes->get('dashboard',      'Dashboard::index');
     $routes->get('users',          'Users::index');
+    $routes->get('userimg',          'Users::getImg');
+    
 
     $routes->post('checklogin',    'Auth::checklogin');
     $routes->get('register',          'Auth::register');
