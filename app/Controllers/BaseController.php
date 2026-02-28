@@ -53,8 +53,8 @@ abstract class BaseController extends Controller
         // die('[accessToken] : '.$access_token);
 
         $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, 'https://conn.myexpress-api.click/api/'.$url); // prod
-        curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/'.$url); //dev 
+        curl_setopt($ch, CURLOPT_URL, 'https://conn.myexpress-api.click/api/'.$url); // prod
+        // curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/'.$url); //dev 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $headers = [
