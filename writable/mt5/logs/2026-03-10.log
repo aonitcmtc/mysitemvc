@@ -1,0 +1,17 @@
+21:30:01 | CANDLES_UPDATED    | BTCUSD                   | tf:M15 count:80
+21:31:13 | ORDER_QUEUED       | ORD_69b08da17373c4.55855630 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+21:31:20 | ORDER_QUEUED       | ORD_69b08da8db6242.40246907 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+21:32:47 | ORDER_QUEUED       | ORD_69b08dfff11445.16485528 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+21:45:01 | CANDLES_UPDATED    | BTCUSD                   | tf:M15 count:80
+22:00:14 | CANDLES_UPDATED    | BTCUSD                   | tf:M15 count:80
+22:15:01 | CANDLES_UPDATED    | BTCUSD                   | tf:M15 count:80
+22:20:20 | ORDER_QUEUED       | ORD_69b09924e50c31.89699928 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+22:29:55 | ORDER_QUEUED       | ORD_69b09b63614588.13056762 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+22:30:01 | CANDLES_UPDATED    | BTCUSD                   | tf:M15 count:80
+23:21:32 | CANDLES_UPDATED    | XAUUSD                   | tf:M15 count:80
+23:21:58 | CANDLES_UPDATED    | XAUUSD                   | tf:M15 count:80
+23:22:17 | CANDLES_UPDATED    | XAUUSD                   | tf:M15 count:80
+23:22:53 | ORDER_QUEUED       | ORD_69b0a7cd71a450.58824701 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+23:23:05 | ORDER_QUEUED       | ORD_69b0a7d99d2a54.28543177 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+23:23:36 | ORDER_QUEUED       | ORD_69b0a7f82564e5.72124989 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144
+23:23:44 | ORDER_QUEUED       | ORD_69b0a800bba0f9.33936916 | buy 0.01 XAUUSD type:market sl:0 tp:0 ip:223.206.214.144

@@ -42,7 +42,7 @@ class Auth extends BaseController
             'user_login'      => $countlogin['count'] ?? 'wait...',
             'admin_name' => session()->get('admin_name') ?? 'no_access token'
         ];
-        
+        // print_r($data); die();
         return view('App\Admin\Views\login', $data);
     }
 

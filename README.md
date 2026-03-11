@@ -1,5 +1,12 @@
 # composer
+# --aws S3
 composer require aws/aws-sdk-php
+# --google Auth socialite
+composer require agungsugiarto/codeigniter4-socialite
+
+# if codeigniter >= 4.7.0
+# app/Config/View.php
+# add func to files >> public $appOverridesFolder = APPPATH . 'Views/overrides';
 
 # CodeIgniter 4 Application Starter
 

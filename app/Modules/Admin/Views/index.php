@@ -133,7 +133,9 @@
                                     • <a class="text-decoration-none text-light" href="/admin/chartlist">Chart list</a><br>
                                     • <a class="text-decoration-none text-light" href="/admin/chart/xauusd">XAUUSD</a><br>
                                     • <a class="text-decoration-none text-light" href="/admin/chart/xauusdclassic">XAUUSD Classic</a><br>
-                                    • <a class="text-decoration-none text-light" href="/admin/chart/chartgoldthai">Gold thai</a>
+                                    • <a class="text-decoration-none text-light" href="/admin/chart/chartgoldthai">Gold thai</a><br>
+                                    • <a class="text-decoration-none text-light" href="/admin/chart/swiss_gold_export">SWISS Gold Export</a><br>
+                                    • <a class="text-decoration-none text-light" href="/admin/chart/swiss_gold_import">SWISS Gold Import</a>
                                     
                                 </div>
                             </div>
@@ -159,7 +161,11 @@
                                     • <a class="text-decoration-none text-light" href="#Risk_areas">Risk areas</a><br>
                                     • <a class="text-decoration-none text-light" href="#Risk_indicators">Risk indicators</a><br>
                                     • <a class="text-decoration-none text-light" href="#Measurement_analysis">Measurement analysis</a><br>
-                                    • <a class="text-decoration-none text-light" href="#Revision">Revision</a>
+                                    • <a class="text-decoration-none text-light" href="#Revision">Revision</a><br>
+
+                                    • <a class="text-decoration-none text-light" href="/admin/mt5/goldai">Gold AI Trade</a><br>
+                                    <!-- • <a class="text-decoration-none text-light" href="/admin/mt5/order">Order</a><br> -->
+                                    • <a class="text-decoration-none text-light" href="/admin/mt5/orderai">Order AI</a><br>
                                 </div>
                             </div>
 

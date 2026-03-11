@@ -16,7 +16,8 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:9000';
+    // public string $baseURL = 'http://localhost:9000';
+    public string $baseURL = 'https://dev.myexpress-api.click/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -157,7 +158,7 @@ class App extends BaseConfig
      * secure, the user will be redirected to a secure version of the page
      * and the HTTP Strict Transport Security (HSTS) header will be set.
      */
-    public bool $forceGlobalSecureRequests = false;
+    public bool $forceGlobalSecureRequests = true; // false
 
     /**
      * --------------------------------------------------------------------------
@@ -180,7 +181,10 @@ class App extends BaseConfig
      *
      * @var array<string, string>
      */
-    public array $proxyIPs = [];
+    // public array $proxyIPs = [];
+    public array $proxyIPs = [
+        '0.0.0.0/0' => 'CF-Connecting-IP',
+    ];
 
     /**
      * --------------------------------------------------------------------------

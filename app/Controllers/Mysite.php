@@ -4,6 +4,16 @@ namespace App\Controllers;
 
 class Mysite extends BaseController
 {
+    public function __construct()
+    {
+        // die("__construct::func() >>> first step before run public function.");
+
+        // Simple protection (you can also use Filter - recommended)
+        // if (!session()->get('access_token')) {
+        //     return redirect()->to('/admin/login');
+        // }
+    }
+    
     public function index(): string
     {
         $request    = service('request'); // ดึง Request Service ของ CI4
@@ -33,6 +43,31 @@ class Mysite extends BaseController
         return view('App\Views\layout', [
             'title'   => $data['title'],
             'content' => view('App\Views\mysite', $data)
+        ]);
+    }
+
+    public function note(): string|\CodeIgniter\HTTP\RedirectResponse
+    {
+        // print_r(session()->get('user'));die();
+        if (!session()->get('user')) {
+            return redirect()->to('/mysite')->with('status','login');
+        }
+
+        $session =  session();
+        $user = $session->get('user');
+        $userName = $user['name'] ?? 'User';
+
+        $data = [
+            'count_view' => $logmysite['count'] ?? 'wait...',
+            'title'      => 'Note',
+            'user'     => $user,
+            'userName' => $userName,
+            'favicon' => 'note.ico'
+        ];
+        
+        return view('App\Views\layout', [
+            'title'   => $data['title'],
+            'content' => view('App\Views\note', $data)
         ]);
     }
 

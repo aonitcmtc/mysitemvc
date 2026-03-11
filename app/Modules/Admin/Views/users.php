@@ -58,7 +58,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php if (!empty($users)) : 
                             $formatter = new IntlDateFormatter(
                                 'th_TH@calendar=buddhist', // Thai locale with Buddhist calendar
                                 IntlDateFormatter::FULL,   // Full date style
@@ -86,6 +86,7 @@
                                 
                             </tr>
                         <?php endforeach; ?>
+                        <?php endif; ?>
                         <!-- more rows... -->
                     </tbody>
                 </table>
